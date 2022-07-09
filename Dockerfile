@@ -19,6 +19,7 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 ADD . ./
 # Add PNPM
+RUN apk add --no-cache curl
 RUN curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm
 RUN pnpm install -r --offline --prod
 

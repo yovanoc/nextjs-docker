@@ -3,6 +3,7 @@ FROM node:18-alpine AS deps
 # Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
+RUN apt-get update; apt-get install curl
 # Add PNPM
 RUN curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm
 # pnpm fetch ne nécessite que lockfile
